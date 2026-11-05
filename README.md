@@ -27,6 +27,9 @@ I participated in HUCTF 2026 and worked through hands-on security challenges usi
 | The Maze | Client-side logic | Investigated browser-side checker; screenshot shows a flag-like result |
 
 ## 1. Front Desk — Source inspection and reconnaissance
+### Challenge Screenshot
+
+![Front Desk CTF Challenge](screenshot-01.jpg)
 
 The challenge encouraged inspecting the page source and common site files. I viewed the HTML and followed a hidden clue to an otherwise undisclosed page. The screenshot shows a flag page, and the challenge interface reports **Correct**.
 
