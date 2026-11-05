@@ -27,15 +27,12 @@ I participated in HUCTF 2026 and worked through hands-on security challenges usi
 | The Maze | Client-side logic | Investigated browser-side checker; screenshot shows a flag-like result |
 
 ## 1. Front Desk — Source inspection and reconnaissance
-### Challenge Screenshot
-
-![Front Desk CTF Challenge](screenshot-01.jpg)
 
 The challenge encouraged inspecting the page source and common site files. I viewed the HTML and followed a hidden clue to an otherwise undisclosed page. The screenshot shows a flag page, and the challenge interface reports **Correct**.
 
-![Front Desk accepted submission](images/screenshot-01.jpg)
-![Hidden reconnaissance result](images/screenshot-02.jpg)
-![HTML source inspection](images/screenshot-03.jpg)
+![Front Desk accepted submission](screenshot-01.jpg)
+![Hidden reconnaissance result](screenshot-02.jpg)
+![HTML source inspection](screenshot-03.jpg)
 
 **Takeaway:** Comments, exposed paths, and other information in publicly delivered HTML can reveal unintended application details. Sensitive information must not be embedded in client-accessible source.
 
@@ -53,8 +50,8 @@ The application linked my note at `/note/1337`. I changed the numeric ID to see 
 
 The ability to read other owners' notes by changing an ID demonstrated broken object-level authorization. I did **not** record a final flag for this challenge.
 
-![NoteVault challenge](images/screenshot-04.jpg)
-![NoteVault guest note](images/screenshot-06.jpg)
+![NoteVault challenge](screenshot-04.jpg)
+![NoteVault guest note](screenshot-06.jpg)
 
 **Mitigation:** Check authorization for each object on every request, regardless of whether its identifier is predictable.
 
@@ -62,8 +59,8 @@ The ability to read other owners' notes by changing an ID demonstrated broken ob
 
 The greeting application inserted user input into a server-rendered template. I tested an arithmetic template expression, `{{7*7}}`, and observed evaluated output rather than literal text. A later screenshot shows a flag-like value rendered in the greeting, supporting successful exploitation of the challenge environment.
 
-![Greeter input and evaluated expression](images/screenshot-11.jpg)
-![Greeter with flag result](images/screenshot-12.jpg)
+![Greeter input and evaluated expression](screenshot-11.jpg)
+![Greeter with flag result](screenshot-12.jpg)
 
 **Mitigation:** Treat input as data rather than template source, and avoid evaluating user-controlled template expressions.
 
@@ -71,10 +68,10 @@ The greeting application inserted user input into a server-rendered template. I 
 
 Each page supplied a six-character code for the next path, `/r/<code>`. I followed the sequence across eight steps and reached a **chain complete** page with a flag.
 
-![Relay Race challenge](images/screenshot-13.jpg)
-![Step 1](images/screenshot-14.jpg)
-![Step 8](images/screenshot-21.jpg)
-![Chain complete](images/screenshot-22.jpg)
+![Relay Race challenge](screenshot-13.jpg)
+![Step 1](screenshot-14.jpg)
+![Step 8](screenshot-21.jpg)
+![Chain complete](screenshot-22.jpg)
 
 **Takeaway:** Careful observation, accurate URL navigation, and documenting intermediate steps matter even in challenges without an exploit payload.
 
@@ -98,9 +95,9 @@ Because x86-64 is little-endian, I reversed each eight-byte value's byte order b
 HUCTF{fmtstr_b3f8242b8703}
 ```
 
-![Badge Printer challenge](images/screenshot-35.jpg)
-![Stack inspection output](images/screenshot-36.jpg)
-![Additional stack positions](images/screenshot-38.jpg)
+![Badge Printer challenge](screenshot-35.jpg)
+![Stack inspection output](screenshot-36.jpg)
+![Additional stack positions](screenshot-38.jpg)
 
 **Root cause:** A call resembling `printf(user_input)` interprets attacker-controlled formatting tokens. A safer pattern is `printf("%s", user_input)`.
 
@@ -123,8 +120,8 @@ else:
 
 My notes document this method and a candidate flag, but the screenshot of my submission says **Incorrect**. I therefore do not claim a confirmed solve.
 
-![RSA challenge](images/screenshot-26.jpg)
-![Local Python work](images/screenshot-27.jpg)
+![RSA challenge](screenshot-26.jpg)
+![Local Python work](screenshot-27.jpg)
 
 **Takeaway:** Textbook RSA without secure padding can expose short plaintexts even without factoring the modulus.
 
@@ -132,8 +129,8 @@ My notes document this method and a candidate flag, but the screenshot of my sub
 
 I used `exiftool` to inspect `badge.png`. The terminal output flagged **minor trailer data after the PNG IEND chunk**, consistent with the challenge hint that data might exist beyond the image. My notes do not include a completed extraction or flag.
 
-![Event Badge challenge](images/screenshot-28.jpg)
-![Metadata inspection](images/screenshot-29.jpg)
+![Event Badge challenge](screenshot-28.jpg)
+![Metadata inspection](screenshot-29.jpg)
 
 **Takeaway:** Image forensics includes checking file structure and trailing bytes, not just visible pixels.
 
@@ -145,10 +142,10 @@ I used `exiftool` to inspect `badge.png`. The terminal output flagged **minor tr
 - **Winner's Circle:** Explored a 64-bit ret2win challenge with no stack canary or PIE and a printed `win()` address; no confirmed exploit is documented.
 - **The Maze:** Investigated a client-side checker; the screenshot records a flag-like output, but no accepted submission is shown.
 
-![Proof Vault](images/screenshot-23.jpg)
-![Member Portal](images/screenshot-30.jpg)
-![Winner's Circle](images/screenshot-31.jpg)
-![The Maze](images/screenshot-40.jpg)
+![Proof Vault](screenshot-23.jpg)
+![Member Portal](screenshot-30.jpg)
+![Winner's Circle](screenshot-31.jpg)
+![The Maze](screenshot-40.jpg)
 
 ## Tools and concepts practiced
 
